@@ -303,9 +303,11 @@ public class quiz extends javax.swing.JFrame {
             //Check if user failed the test
             if (percCorrect < 50) {
                 messageLabel.setText("Unfortunatley you failed the quiz");
+                retakeButton.setEnabled(true);
             }
             else {
                 messageLabel.setText("Congrats you passed!");
+                retakeButton.setEnabled(false);
             }
         }
         
