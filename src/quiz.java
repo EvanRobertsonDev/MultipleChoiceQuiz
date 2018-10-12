@@ -38,11 +38,6 @@ public class quiz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Results = new javax.swing.JPanel();
-        scoreLabel = new javax.swing.JLabel();
-        resultLabel = new javax.swing.JLabel();
-        messageLabel = new javax.swing.JLabel();
-        retakeButton = new javax.swing.JButton();
         Home = new javax.swing.JPanel();
         titleLabel = new javax.swing.JLabel();
         instructionLabel1 = new javax.swing.JLabel();
@@ -64,37 +59,13 @@ public class quiz extends javax.swing.JFrame {
         correctLabel = new javax.swing.JLabel();
         incorrectLabel = new javax.swing.JLabel();
         errorLabel = new javax.swing.JLabel();
+        Results = new javax.swing.JPanel();
+        scoreLabel = new javax.swing.JLabel();
+        resultLabel = new javax.swing.JLabel();
+        messageLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Results.setBackground(new java.awt.Color(102, 102, 255));
-        Results.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        scoreLabel.setFont(new java.awt.Font("WebLetterer Pro BB", 0, 24)); // NOI18N
-        scoreLabel.setForeground(new java.awt.Color(255, 153, 0));
-        scoreLabel.setText("You Got a Score of:");
-        Results.add(scoreLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
-
-        resultLabel.setFont(new java.awt.Font("WebLetterer Pro BB", 0, 24)); // NOI18N
-        resultLabel.setForeground(new java.awt.Color(255, 153, 0));
-        resultLabel.setText("Results");
-        Results.add(resultLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, -1, -1));
-
-        messageLabel.setFont(new java.awt.Font("WebLetterer Pro BB", 0, 18)); // NOI18N
-        messageLabel.setForeground(new java.awt.Color(255, 153, 0));
-        messageLabel.setText("text text text text text");
-        Results.add(messageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
-
-        retakeButton.setText("Retake Quiz");
-        retakeButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                retakeButtonActionPerformed(evt);
-            }
-        });
-        Results.add(retakeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, -1, -1));
-
-        getContentPane().add(Results, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 320));
 
         Home.setBackground(new java.awt.Color(102, 102, 255));
         Home.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -223,6 +194,26 @@ public class quiz extends javax.swing.JFrame {
 
         getContentPane().add(questions, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 320));
 
+        Results.setBackground(new java.awt.Color(102, 102, 255));
+        Results.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        scoreLabel.setFont(new java.awt.Font("WebLetterer Pro BB", 0, 24)); // NOI18N
+        scoreLabel.setForeground(new java.awt.Color(255, 153, 0));
+        scoreLabel.setText("You Got a Score of:");
+        Results.add(scoreLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
+
+        resultLabel.setFont(new java.awt.Font("WebLetterer Pro BB", 0, 24)); // NOI18N
+        resultLabel.setForeground(new java.awt.Color(255, 153, 0));
+        resultLabel.setText("Results");
+        Results.add(resultLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, -1, -1));
+
+        messageLabel.setFont(new java.awt.Font("WebLetterer Pro BB", 0, 18)); // NOI18N
+        messageLabel.setForeground(new java.awt.Color(255, 153, 0));
+        messageLabel.setText("text text text text text");
+        Results.add(messageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
+
+        getContentPane().add(Results, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 320));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -246,6 +237,12 @@ public class quiz extends javax.swing.JFrame {
 
     private void nextQuestionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextQuestionButtonActionPerformed
         
+        //Random Number Variables
+        int randomNumber1 = (int)Math.round(Math.random()*200+1);
+        int randomNumber2 = (int)Math.round(Math.random()*200+1);
+        int randomNumber3 = (int)Math.round(Math.random()*200+1);
+        
+        
         //Increase Page number and hide potental error from last question
         pageNum = pageNum + 1;
         errorLabel.setVisible(false);
@@ -260,10 +257,10 @@ public class quiz extends javax.swing.JFrame {
         //Check what question user is on
         if (pageNum == 2) {
             questionLabel.setText("What is 83 in Octal?");
-            answerALabel.setText("A. 231");
-            answerBLabel.setText("B. 132");
+            answerALabel.setText("A. " + randomNumber1);
+            answerBLabel.setText("B. " + randomNumber2);
             answerCLabel.setText("C. 123");
-            answerDLabel.setText("D. 8");
+            answerDLabel.setText("D. " + randomNumber3);
         }
         
         if (pageNum == 3) {
@@ -303,11 +300,9 @@ public class quiz extends javax.swing.JFrame {
             //Check if user failed the test
             if (percCorrect < 50) {
                 messageLabel.setText("Unfortunatley you failed the quiz");
-                retakeButton.setEnabled(true);
             }
             else {
                 messageLabel.setText("Congrats you passed!");
-                retakeButton.setEnabled(false);
             }
         }
         
@@ -399,10 +394,6 @@ public class quiz extends javax.swing.JFrame {
         
     }//GEN-LAST:event_submitButtonActionPerformed
 
-    private void retakeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retakeButtonActionPerformed
-        
-    }//GEN-LAST:event_retakeButtonActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -459,7 +450,6 @@ public class quiz extends javax.swing.JFrame {
     private javax.swing.JLabel questionTitleLabel;
     private javax.swing.JPanel questions;
     private javax.swing.JLabel resultLabel;
-    private javax.swing.JButton retakeButton;
     private javax.swing.JLabel scoreLabel;
     private javax.swing.JButton startButton;
     private javax.swing.JButton submitButton;
